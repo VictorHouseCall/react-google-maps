@@ -62,6 +62,9 @@ export default function withGoogleMap(WrappedComponent) {
       );
       // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
       const map = new google.maps.Map(node);
+      this.props.newStyles.forEach(({styleID, style}) => {
+        map.mapTypes.set(styleID, style);
+      });
       this.setState({ map });
     }
 
